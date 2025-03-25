@@ -1,0 +1,210 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.container{
+    background-color: hsl(0, 0%, 94%);
+    width: 670px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+}
+/*start background shapes */
+.container > span:nth-of-type(1),
+.container > span:nth-of-type(2){
+    margin: 40px 0;
+    width: 50px;
+    height: 50px;
+    display: block;
+    transform: rotate(7deg);
+    border-right: 5px solid #09a8f1;
+    border-bottom: 4px solid hsl(0, 0%, 94%);
+    border-radius: 50%;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+}
+.container > span:nth-of-type(2){
+    left: calc(50% + 15px);
+}
+.container > span:nth-of-type(3){
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 2px;
+    top: 100px;
+    left: -15px;
+    transform: rotate(90deg);
+}
+.ecg,
+.round{
+    width: fit-content;
+    margin: auto;
+    position: absolute;
+    bottom: 5px;
+    z-index: 1;
+}
+.round{
+    right: 10px;
+    bottom: 400px;
+    transform: rotate(90deg);
+}
+.ecg div,
+.round div{
+    display: flex;
+    margin-bottom: 30px;
+}
+.round div{
+    margin-bottom: 5px;
+}
+.round span{
+    margin-right: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: #03a9f4;
+    border-radius: 50%;
+}
+.ecg div span{
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: relative;
+}
+.ecg div span::after,
+.ecg div span::before,
+.container > span:nth-of-type(3)::before,
+.container > span:nth-of-type(3)::after{
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 3px;
+    background-color: #ff572242;
+}
+.ecg div span::before,
+.container > span:nth-of-type(3)::before{
+    left: 0;
+    transform: rotateZ(-45deg);
+    transform-origin: bottom left;
+}
+.ecg div span::after,
+.container > span:nth-of-type(3)::after{
+    right: 0;
+    transform: rotateZ(45deg);
+    transform-origin: bottom right;
+}
+/*end background shapes */
+.counter-back{
+    background-color: hsl(0, 0%, 94%);
+    padding: 50px 80px;
+    box-shadow: 0px 8px 5px #80808045;
+    position: relative;
+    z-index: 2;
+}
+.counter{
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 15px;
+    padding: 15px;
+    border-bottom-right-radius: 50px;
+    position: relative;
+}
+.counter .inputs{
+    border-bottom: 1px solid hsl(0, 0%, 86%);
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    position: relative;
+}
+.counter .inputs input{
+    width: 90px;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 94%);
+}
+.counter .inputs .year{
+    margin-right: 20px;
+}
+.counter .inputs .mistake{
+    color: red;
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    bottom: 30px;
+}
+.counter .inputs .type{
+    color: hsl(0, 1%, 44%);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.counter .inputs input::placeholder{
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: .5;
+}
+.counter .inputs input:focus{
+    outline-color: hsl(259, 100%, 65%);
+    caret-color: hsl(259, 100%, 65%);
+}
+.counter .inputs input:focus::placeholder{
+    opacity: 0;
+}
+button{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(259, 100%, 65%);
+    position: absolute;
+    top: 115px;
+    right: 10px;
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color:  hsl(0, 0%, 8%);
+}
+.result div{
+    font-size: 40px;
+    font-weight: 800;
+    width: fit-content;
+}
+.result div span{
+    color:hsl(259, 100%, 65%);
+    letter-spacing: 5px;
+    margin:0 5px;
+}
+@media (max-width:767px){
+    .container > span:nth-of-type(1),
+    .container > span:nth-of-type(2),
+    .container > span:nth-of-type(3),
+    .ecg,.round{
+        display: none;
+    }
+    .counter-back{
+        height: 100vh;
+        padding: 0 20px;
+        background-color: hsl(259deg 94% 81% / 12%);
+    }
+    .counter{
+        margin-top: 30px;
+    }
+    .container{
+        padding: 0;
+    }
+    button{
+        position: relative;
+        top: -20px;
+        margin: 0 auto;
+    }
+}
