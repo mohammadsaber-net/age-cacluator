@@ -85,7 +85,7 @@ function toadd(month,day,year){
     if (day!==0 && month!==0 && year!==0){
         let birthDate=new Date(`${month} ${day} ${year}`)
         let age=toDay - birthDate
-        if (birthDate.getTime() > toDay.getTime()){
+        if (birthDate > toDay){
             let month=1000*60*60*24*30.5
             if (-age > month){
                 spanMonth.innerHTML="that month didn't come yet"
@@ -105,7 +105,7 @@ function toadd(month,day,year){
         
     }
 }
-const inputs = document.querySelectorAll("input");
+let inputs = document.querySelectorAll("input");
   inputs.forEach((input, index) => {
     input.addEventListener("keydown",  (event) => {
       let currentIndex=index
@@ -119,3 +119,24 @@ const inputs = document.querySelectorAll("input");
       }
     });
   });
+  function createShapes(){
+      let container =document.querySelector(".container")
+      let topDown=document.querySelector(".top-down")
+      let round=document.querySelector(".round")
+      for (i=0;i<27;i++){
+          let span=document.createElement("span")
+          if (i < 3){
+            container.prepend(span)
+          }else if (i < 9){
+            topDown.children[0].append(span)
+          }else if (i < 15){
+            topDown.children[1].append(span)
+ 
+          }else if (i < 21){
+              round.children[0].append(span)
+          }else{
+              round.children[1].append(span)
+          }
+      }
+  }
+  createShapes()

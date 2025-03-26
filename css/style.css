@@ -9,7 +9,7 @@ body{
 
 .container{
     background-color: hsl(0, 0%, 94%);
-    width: 670px;
+    width: 700px;
     margin: 50px auto;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ body{
     left: -15px;
     transform: rotate(90deg);
 }
-.ecg,
+.top-down,
 .round{
     width: fit-content;
     margin: auto;
@@ -58,7 +58,7 @@ body{
     bottom: 400px;
     transform: rotate(90deg);
 }
-.ecg div,
+.top-down div,
 .round div{
     display: flex;
     margin-bottom: 30px;
@@ -73,14 +73,14 @@ body{
     background-color: #03a9f4;
     border-radius: 50%;
 }
-.ecg div span{
+.top-down div span{
     display: block;
     width: 30px;
     height: 2px;
     position: relative;
 }
-.ecg div span::after,
-.ecg div span::before,
+.top-down div span::after,
+.top-down div span::before,
 .container > span:nth-of-type(3)::before,
 .container > span:nth-of-type(3)::after{
     content: "";
@@ -89,13 +89,13 @@ body{
     height: 3px;
     background-color: #ff572242;
 }
-.ecg div span::before,
+.top-down div span::before,
 .container > span:nth-of-type(3)::before{
     left: 0;
     transform: rotateZ(-45deg);
     transform-origin: bottom left;
 }
-.ecg div span::after,
+.top-down div span::after,
 .container > span:nth-of-type(3)::after{
     right: 0;
     transform: rotateZ(45deg);
@@ -188,7 +188,7 @@ button:hover{
     .container > span:nth-of-type(1),
     .container > span:nth-of-type(2),
     .container > span:nth-of-type(3),
-    .ecg,.round{
+    .top-down,.round{
         display: none;
     }
     .counter-back{
@@ -200,11 +200,27 @@ button:hover{
         margin-top: 30px;
     }
     .container{
-        padding: 0;
+        width: fit-content;
+        padding: 15px;
     }
     button{
         position: relative;
-        top: -20px;
+        top: -25px;
         margin: 0 auto;
+    }
+    .counter .inputs{
+        gap: 25px;
+    }
+    .counter .inputs input{
+        width: 65px;
+        padding: 5px;
+    }
+    .counter .inputs .mistake{
+        font-size: 8px;
+        min-width: 100px;
+    }
+    input::placeholder{
+        font-weight: 400;
+        font-size: 10px;
     }
 }
