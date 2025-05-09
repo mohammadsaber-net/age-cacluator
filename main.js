@@ -11,6 +11,7 @@ let btn = document.querySelector("button")
 let duration = 1000;
 let theYear, theDay, theMonth;
 let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+let monthLeters = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 let specialMonths30 = [2, 4, 6, 9, 11]
 let toDay = new Date()
 btn.onclick = (() => {
@@ -22,10 +23,11 @@ btn.onclick = (() => {
 })
 function checkType(day, month, year) {
     // check day
-    if (isNaN(day) && day.length > 0) {
+
+    if (isNaN(day)) {
         spanDay.innerHTML = "invalid input"
         removeText(spanDay, inputDay, dayLabel)
-    } else if (day.length === 0) {
+    } else if (day.length <= 0) {
         spanDay.innerHTML = "this field is required"
         removeText(spanDay, inputDay, dayLabel)
     } else {
@@ -42,10 +44,10 @@ function checkType(day, month, year) {
         }
     }
     // month check
-    if (isNaN(month) && month.length > 0) {
+    if (isNaN(month)) {
         spanMonth.innerHTML = "invalid input"
         removeText(spanMonth, inputMonth, monthLabel)
-    } else if (month.length == 0) {
+    } else if (month.length <= 0) {
         spanMonth.innerHTML = "this field is required"
         removeText(spanMonth, inputMonth, monthLabel)
     } else {
@@ -57,10 +59,10 @@ function checkType(day, month, year) {
         }
     }
     // check year
-    if (isNaN(year) && year.length > 0) {
+    if (isNaN(year)) {
         spanYear.innerHTML = "invalid input"
         removeText(spanYear, inputYear, yearLabel)
-    } else if (year.length == 0) {
+    } else if (year.length <= 0) {
         spanYear.innerHTML = "this field is required"
         removeText(spanYear, inputYear, yearLabel)
     } else {
@@ -82,11 +84,15 @@ function removeText(text, input, label) {
     }, duration)
 }
 function toadd(month, day, year) {
-    if (day !== 0 && month !== 0 && year !== 0) {
-        let birthDate = new Date(`${month} ${day} ${year}`)
+    if (day !== "0" && month !== "0" && year !== "0") {
+        console.log(day)
+        let monthLeter = monthLeters[+month - 1]
+        let birthDate = new Date(`${monthLeter} ${day} ${year}`)
+        console.log(birthDate)
+        console.log(toDay)
         let age = toDay - birthDate
-        if (birthDate > toDay) {
-            let month = 1000 * 60 * 60 * 24 * 30.5
+        if (+birthDate > +toDay) {
+            let month = 1000 * 60 * 60 * 24 * 30
             if (-age > month) {
                 spanMonth.innerHTML = "that month didn't come yet"
                 removeText(spanMonth, inputMonth, monthLabel)
@@ -95,12 +101,13 @@ function toadd(month, day, year) {
                 removeText(spanDay, inputDay, dayLabel)
             }
         } else {
-            let years = Math.floor(parseInt(age) / (1000 * 60 * 60 * 24 * 365.5))
-            let months = Math.floor((parseInt(age) % (1000 * 60 * 60 * 24 * 365.5)) / (1000 * 60 * 60 * 24 * 30.5))
-            let days = Math.floor((parseInt(age) % (1000 * 60 * 60 * 24 * 365.5)) % (1000 * 60 * 60 * 24 * 30.5) / (1000 * 60 * 60 * 24))
-            document.querySelector(".result .year span").innerHTML = (years)
-            document.querySelector(".result .month span").innerHTML = (months)
-            document.querySelector(".result .day span").innerHTML = (days)
+            let years = Math.floor(age / (1000 * 60 * 60 * 24 * 365.3))
+            console.log(years)
+            let months = Math.floor((age % (1000 * 60 * 60 * 24 * 365.3)) / (1000 * 60 * 60 * 24 * 30))
+            let days = Math.floor((age % (1000 * 60 * 60 * 24 * 365.3)) % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24))
+            document.querySelector(".result .year span").innerHTML = years.toString()
+            document.querySelector(".result .month span").innerHTML = months.toString()
+            document.querySelector(".result .day span").innerHTML = days.toString()
         }
 
     }
