@@ -1,16 +1,17 @@
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: hsl(0, 0%, 100%);
 }
 
-.container{
+.container {
     background-color: hsl(0, 0%, 94%);
     width: 700px;
-    margin: 50px auto;
+    margin: 50px auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,105 +19,55 @@ body{
     position: relative;
     overflow: hidden;
 }
+
 /*start background shapes */
-.container > span:nth-of-type(1),
-.container > span:nth-of-type(2){
-    margin: 40px 0;
-    width: 50px;
-    height: 50px;
-    display: block;
-    transform: rotate(7deg);
-    border-right: 5px solid #09a8f1;
-    border-bottom: 4px solid hsl(0, 0%, 94%);
-    border-radius: 50%;
+.container svg:nth-of-type(1) {
     position: absolute;
-    top: -60px;
-    left: 50%;
-}
-.container > span:nth-of-type(2){
-    left: calc(50% + 15px);
-}
-.container > span:nth-of-type(3){
-    position: absolute;
-    display: block;
-    width: 30px;
-    height: 2px;
-    top: 100px;
-    left: -15px;
-    transform: rotate(90deg);
-}
-.top-down,
-.round{
-    width: fit-content;
-    margin: auto;
-    position: absolute;
-    bottom: 5px;
+    top: 30%;
+    left: -110px;
     z-index: 1;
-}
-.round{
-    right: 10px;
-    bottom: 400px;
+    stroke: rgb(9, 120, 218);
+    fill: none;
+    stroke-width: 4px;
+    transform: translate();
     transform: rotate(90deg);
 }
-.top-down div,
-.round div{
-    display: flex;
-    margin-bottom: 30px;
-}
-.round div{
-    margin-bottom: 5px;
-}
-.round span{
-    margin-right: 3px;
-    width: 10px;
-    height: 10px;
-    background-color: #03a9f4;
-    border-radius: 50%;
-}
-.top-down div span{
-    display: block;
-    width: 30px;
-    height: 2px;
-    position: relative;
-}
-.top-down div span::after,
-.top-down div span::before,
-.container > span:nth-of-type(3)::before,
-.container > span:nth-of-type(3)::after{
-    content: "";
+
+.container svg:nth-of-type(2) {
     position: absolute;
-    width: 23px;
-    height: 3px;
-    background-color: #ff572242;
+    top: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    stroke: rgb(9, 120, 218);
+    fill: none;
+    stroke-width: 4px;
 }
-.top-down div span::before,
-.container > span:nth-of-type(3)::before{
-    left: 0;
-    transform: rotateZ(-45deg);
-    transform-origin: bottom left;
+
+@media (max-width:667px) {
+    svg {
+        display: none;
+    }
 }
-.top-down div span::after,
-.container > span:nth-of-type(3)::after{
-    right: 0;
-    transform: rotateZ(45deg);
-    transform-origin: bottom right;
-}
+
 /*end background shapes */
-.counter-back{
+.counter-back {
     background-color: hsl(0, 0%, 94%);
     padding: 50px 80px;
     box-shadow: 0px 8px 5px #80808045;
     position: relative;
     z-index: 2;
 }
-.counter{
+
+.counter {
     background-color: hsl(0, 0%, 100%);
     border-radius: 15px;
     padding: 15px;
     border-bottom-right-radius: 50px;
     position: relative;
 }
-.counter .inputs{
+
+.counter .inputs {
     border-bottom: 1px solid hsl(0, 0%, 86%);
     padding-bottom: 50px;
     display: flex;
@@ -124,41 +75,49 @@ body{
     gap: 50px;
     position: relative;
 }
-.counter .inputs input{
+
+.counter .inputs input {
     width: 90px;
     padding: 10px;
     display: block;
     border-radius: 5px;
     border: 1px solid hsl(0, 0%, 94%);
 }
-.counter .inputs .year{
+
+.counter .inputs .year {
     margin-right: 20px;
 }
-.counter .inputs .mistake{
+
+.counter .inputs .mistake {
     color: red;
     display: block;
     position: absolute;
     font-size: 12px;
     bottom: 30px;
 }
-.counter .inputs .type{
+
+.counter .inputs .type {
     color: hsl(0, 1%, 44%);
     text-transform: uppercase;
     font-size: 12px;
 }
-.counter .inputs input::placeholder{
+
+.counter .inputs input::placeholder {
     text-transform: uppercase;
     font-weight: 800;
     opacity: .5;
 }
-.counter .inputs input:focus{
+
+.counter .inputs input:focus {
     outline-color: hsl(259, 100%, 65%);
     caret-color: hsl(259, 100%, 65%);
 }
-.counter .inputs input:focus::placeholder{
+
+.counter .inputs input:focus::placeholder {
     opacity: 0;
 }
-button{
+
+button {
     display: block;
     width: 50px;
     height: 50px;
@@ -171,55 +130,69 @@ button{
     border: none;
     cursor: pointer;
 }
-button:hover{
-    background-color:  hsl(0, 0%, 8%);
+
+button:hover {
+    background-color: hsl(0, 0%, 8%);
 }
-.result div{
+
+.result div {
     font-size: 40px;
     font-weight: 800;
     width: fit-content;
 }
-.result div span{
-    color:hsl(259, 100%, 65%);
+
+.result div span {
+    color: hsl(259, 100%, 65%);
     letter-spacing: 5px;
-    margin:0 5px;
+    margin: 0 5px;
 }
-@media (max-width:767px){
-    .container > span:nth-of-type(1),
-    .container > span:nth-of-type(2),
-    .container > span:nth-of-type(3),
-    .top-down,.round{
+
+@media (max-width:767px) {
+
+    .container>span:nth-of-type(1),
+    .container>span:nth-of-type(2),
+    .container>span:nth-of-type(3),
+    .top-down,
+    .round {
         display: none;
     }
-    .counter-back{
+
+    .counter-back {
         height: 100vh;
         padding: 0 20px;
         background-color: hsl(259deg 94% 81% / 12%);
     }
-    .counter{
+
+    .counter {
         margin-top: 30px;
     }
-    .container{
+
+    .container {
         width: fit-content;
         padding: 15px;
     }
-    button{
+
+    button {
         position: relative;
         top: -25px;
         margin: 0 auto;
     }
-    .counter .inputs{
+
+    .counter .inputs {
         gap: 25px;
     }
-    .counter .inputs input{
+
+    .counter .inputs input {
         width: 65px;
         padding: 5px;
     }
-    .counter .inputs .mistake{
+
+    .counter .inputs .mistake {
         font-size: 8px;
         min-width: 100px;
     }
-    input::placeholder{
+
+    input::placeholder {
         font-weight: 400;
         font-size: 10px;
     }
