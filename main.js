@@ -22,8 +22,7 @@ btn.onclick = (() => {
     toadd(theMonth, theDay, theYear)
 })
 function checkType(day, month, year) {
-    // check day
-
+    //daycheck
     if (isNaN(day)) {
         spanDay.innerHTML = "invalid input"
         removeText(spanDay, inputDay, dayLabel)
