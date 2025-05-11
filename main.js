@@ -23,7 +23,7 @@ btn.onclick = (() => {
 })
 function checkType(day, month, year) {
     //daycheck
-    if (isNaN(day)) {
+    if (isNaN(day) || day === "0") {
         spanDay.innerHTML = "invalid input"
         removeText(spanDay, inputDay, dayLabel)
     } else if (day.length <= 0) {
@@ -83,7 +83,7 @@ function removeText(text, input, label) {
     }, duration)
 }
 function toadd(month, day, year) {
-    if (day !== "0" && month !== "0" && year !== "0") {
+    if (day !== 0 && month !== 0 && year !== 0) {
         console.log(day)
         let monthLeter = monthLeters[+month - 1]
         let birthDate = new Date(`${monthLeter} ${day} ${year}`)
